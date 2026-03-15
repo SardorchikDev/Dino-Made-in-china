@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: monospace;
+}
+
+/* ===== GAME ===== */
+#game {
+  position: relative;
+  width: 600px;
+  height: 150px;
+  background: #fff;
+  overflow: hidden;
+  border-bottom: 2px solid #535353;
+}
+
+#game.night {
+  filter: invert(1);
+  background: #000;
+}
+
+/* ===== SCORE ===== */
+#score {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 14px;
+  color: #535353;
+}
+
+/* ===== DINO ===== */
+#dino {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 44px;
+  height: 47px;
+}
+
+#dino.duck {
+  height: 30px;
+}
+
+/* Parts */
+.head, .body, .leg {
+  position: absolute;
+  background: #535353;
+}
+
+.head {
+  width: 22px;
+  height: 18px;
+  top: 0;
+  left: 22px;
+}
+
+.body {
+  width: 30px;
+  height: 20px;
+  top: 18px;
+  left: 10px;
+}
+
+.leg {
+  width: 6px;
+  height: 12px;
+  bottom: 0;
+}
+
+.leg1 { left: 12px; }
+.leg2 { left: 24px; }
+
+/* Running animation */
+.run .leg1 {
+  animation: legMove 0.15s infinite alternate;
+}
+.run .leg2 {
+  animation: legMove 0.15s infinite alternate-reverse;
+}
+
+@keyframes legMove {
+  from { height: 12px; }
+  to { height: 6px; }
+}
+
+/* ===== CACTUS ===== */
+#cactus {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  background: #535353;
+}
+
+/* ===== GROUND ===== */
+#ground {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #535353 0px,
+    #535353 20px,
+    transparent 20px,
+    transparent 40px
+  );
+  animation: groundMove 1.2s linear infinite;
+}
+
+@keyframes groundMove {
+  to { transform: translateX(-50%); }
+}
+
+/* ===== MOBILE CONTROLS ===== */
+#controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+#jumpZone, #duckZone {
+  flex: 1;
+}
